@@ -8,7 +8,11 @@ const resultCtx = result.getContext("2d");
 
 function loadVideo() {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+        navigator.mediaDevices.getUserMedia({ 
+            video: {
+                facingMode: { exact: "environment" } 
+            } 
+        }).then((stream) => {
             video.srcObject = stream;
             video.onloadedmetadata = () => {
                 video.play();
